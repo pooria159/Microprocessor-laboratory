@@ -1,0 +1,47 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+s2                                                                                0x0260       2
+s3                                                                                0x0262       2
+s4                                                                                0x0264       2
+s5                                                                                0x0266       2
+s6                                                                                0x0268       2
+_base_y                                                                           0x026A       4
+_lcd_y                                                                            0x026E       1
+_lcd_maxx                                                                         0x026F       1
+_seed                                                                             0x0270       4
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+_hour                                                                             R5           1
+_min                                                                              R4           1
+_sec                                                                              R7           1
+week_day                                                                          R6           1
+_day                                                                              R9           1
+_month                                                                            R8           1
+_year                                                                             R11          1
+s1                                                                                R12,R13      2
+_lcd_x                                                                            R10          1
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+main                                                                              0x00072    182
+rtc_init                                                                          0x00128     25
+rtc_get_time                                                                      0x00141     25
+rtc_get_date                                                                      0x0015A     27
+_lcd_write_nibble_G101                                                            0x00175     20
+_lcd_write_data                                                                   0x00189     12
+lcd_gotoxy                                                                        0x00195     15
+lcd_clear                                                                         0x001A4     13
+lcd_putchar                                                                       0x001B1     26
+lcd_puts                                                                          0x001CB     15
+lcd_putsf                                                                         0x001DA     19
+lcd_init                                                                          0x001ED     47
+itoa                                                                              0x0021C     46
+bcd2bin                                                                           0x0024A     13

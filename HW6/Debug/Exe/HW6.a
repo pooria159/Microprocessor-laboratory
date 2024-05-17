@@ -1,0 +1,450 @@
+;/*******************************************************
+;This program was created by the
+;CodeWizardAVR V3.12 Advanced
+;Automatic Program Generator
+;© Copyright 1998-2014 Pavel Haiduc, HP InfoTech s.r.l.
+;http://www.hpinfotech.com
+;
+;Project : HW6
+;Version : 1.0
+;Date    : 4/15/2024
+;Author  : Pooria Rahimi
+;Company : IUST
+;Comments:
+;Nothing
+;
+;
+;Chip type               : ATmega32
+;Program type            : Application
+;AVR Core Clock frequency: 8.000000 MHz
+;Memory model            : Small
+;External RAM size       : 0
+;Data Stack size         : 512
+;*******************************************************/
+;
+;#include <mega32.h>
+;PCODE: $00000000 VOL: 0
+	#ifndef __SLEEP_DEFINED__
+;PCODE: $00000001 VOL: 0
+	#define __SLEEP_DEFINED__
+;PCODE: $00000002 VOL: 0
+	.EQU __se_bit=0x80
+;PCODE: $00000003 VOL: 0
+	.EQU __sm_mask=0x70
+;PCODE: $00000004 VOL: 0
+	.EQU __sm_powerdown=0x20
+;PCODE: $00000005 VOL: 0
+	.EQU __sm_powersave=0x30
+;PCODE: $00000006 VOL: 0
+	.EQU __sm_standby=0x60
+;PCODE: $00000007 VOL: 0
+	.EQU __sm_ext_standby=0x70
+;PCODE: $00000008 VOL: 0
+	.EQU __sm_adc_noise_red=0x10
+;PCODE: $00000009 VOL: 0
+	.SET power_ctrl_reg=mcucr
+;PCODE: $0000000A VOL: 0
+	#endif
+;PCODE: $0000000B VOL: 0
+;PCODE: $0000000C VOL: 0
+;#include <stdio.h>
+;
+;// Alphanumeric LCD functions
+;#include <alcd.h>
+;
+;// Declare your global variables here
+;int clock[7] = {2, 3, 5, 8, 0, 0, 0};
+
+	.DSEG
+;
+;void increase_clock()
+; 0000 0023 {
+
+	.CSEG
+;PCODE: $0000000D VOL: 0
+;PCODE: $0000000E VOL: 0
+; 0000 0024     clock[6]++;
+;PCODE: $0000000F VOL: 0
+;PCODE: $00000010 VOL: 0
+;PCODE: $00000011 VOL: 0
+;PCODE: $00000012 VOL: 0
+;PCODE: $00000013 VOL: 0
+; 0000 0025     if (clock[6] == 10)
+;PCODE: $00000014 VOL: 0
+;PCODE: $00000015 VOL: 0
+;PCODE: $00000016 VOL: 0
+;PCODE: $00000017 VOL: 0
+; 0000 0026     {
+; 0000 0027         clock[6] = 0;
+;PCODE: $00000018 VOL: 0
+;PCODE: $00000019 VOL: 0
+;PCODE: $0000001A VOL: 0
+;PCODE: $0000001B VOL: 0
+; 0000 0028         clock[5]++;
+;PCODE: $0000001C VOL: 0
+;PCODE: $0000001D VOL: 0
+;PCODE: $0000001E VOL: 0
+;PCODE: $0000001F VOL: 0
+;PCODE: $00000020 VOL: 0
+; 0000 0029     }
+; 0000 002A 
+; 0000 002B     if (clock[5] == 10)
+;PCODE: $00000021 VOL: 0
+;PCODE: $00000022 VOL: 0
+;PCODE: $00000023 VOL: 0
+;PCODE: $00000024 VOL: 0
+;PCODE: $00000025 VOL: 0
+; 0000 002C     {
+; 0000 002D         clock[5] = 0;
+;PCODE: $00000026 VOL: 0
+;PCODE: $00000027 VOL: 0
+;PCODE: $00000028 VOL: 0
+;PCODE: $00000029 VOL: 0
+; 0000 002E         clock[4]++;
+;PCODE: $0000002A VOL: 0
+;PCODE: $0000002B VOL: 0
+;PCODE: $0000002C VOL: 0
+;PCODE: $0000002D VOL: 0
+;PCODE: $0000002E VOL: 0
+; 0000 002F     }
+; 0000 0030 
+; 0000 0031     if (clock[4] == 6)
+;PCODE: $0000002F VOL: 0
+;PCODE: $00000030 VOL: 0
+;PCODE: $00000031 VOL: 0
+;PCODE: $00000032 VOL: 0
+;PCODE: $00000033 VOL: 0
+; 0000 0032     {
+; 0000 0033         clock[4] = 0;
+;PCODE: $00000034 VOL: 0
+;PCODE: $00000035 VOL: 0
+;PCODE: $00000036 VOL: 0
+;PCODE: $00000037 VOL: 0
+; 0000 0034         clock[3]++;
+;PCODE: $00000038 VOL: 0
+;PCODE: $00000039 VOL: 0
+;PCODE: $0000003A VOL: 0
+;PCODE: $0000003B VOL: 0
+;PCODE: $0000003C VOL: 0
+; 0000 0035     }
+; 0000 0036 
+; 0000 0037     if (clock[3] == 10)
+;PCODE: $0000003D VOL: 0
+;PCODE: $0000003E VOL: 0
+;PCODE: $0000003F VOL: 0
+;PCODE: $00000040 VOL: 0
+;PCODE: $00000041 VOL: 0
+; 0000 0038     {
+; 0000 0039         clock[3] = 0;
+;PCODE: $00000042 VOL: 0
+;PCODE: $00000043 VOL: 0
+;PCODE: $00000044 VOL: 0
+;PCODE: $00000045 VOL: 0
+; 0000 003A         clock[2]++;
+;PCODE: $00000046 VOL: 0
+;PCODE: $00000047 VOL: 0
+;PCODE: $00000048 VOL: 0
+;PCODE: $00000049 VOL: 0
+;PCODE: $0000004A VOL: 0
+; 0000 003B     }
+; 0000 003C 
+; 0000 003D     if (clock[2] == 6)
+;PCODE: $0000004B VOL: 0
+;PCODE: $0000004C VOL: 0
+;PCODE: $0000004D VOL: 0
+;PCODE: $0000004E VOL: 0
+;PCODE: $0000004F VOL: 0
+; 0000 003E     {
+; 0000 003F         clock[2] = 0;
+;PCODE: $00000050 VOL: 0
+;PCODE: $00000051 VOL: 0
+;PCODE: $00000052 VOL: 0
+;PCODE: $00000053 VOL: 0
+; 0000 0040         clock[1]++;
+;PCODE: $00000054 VOL: 0
+;PCODE: $00000055 VOL: 0
+;PCODE: $00000056 VOL: 0
+;PCODE: $00000057 VOL: 0
+;PCODE: $00000058 VOL: 0
+; 0000 0041     }
+; 0000 0042 
+; 0000 0043     if (clock[0] == 2)
+;PCODE: $00000059 VOL: 0
+;PCODE: $0000005A VOL: 0
+;PCODE: $0000005B VOL: 0
+;PCODE: $0000005C VOL: 0
+; 0000 0044     {
+; 0000 0045         if (clock[1] == 4)
+;PCODE: $0000005D VOL: 0
+;PCODE: $0000005E VOL: 0
+;PCODE: $0000005F VOL: 0
+;PCODE: $00000060 VOL: 0
+; 0000 0046         {
+; 0000 0047             clock[1] = 0;
+;PCODE: $00000061 VOL: 0
+;PCODE: $00000062 VOL: 0
+;PCODE: $00000063 VOL: 0
+;PCODE: $00000064 VOL: 0
+; 0000 0048             clock[0] = 0;
+;PCODE: $00000065 VOL: 0
+;PCODE: $00000066 VOL: 0
+; 0000 0049         }
+; 0000 004A     }
+;PCODE: $00000067 VOL: 0
+; 0000 004B     else
+;PCODE: $00000068 VOL: 0
+;PCODE: $00000069 VOL: 0
+; 0000 004C     {
+; 0000 004D         if (clock[1] == 10)
+;PCODE: $0000006A VOL: 0
+;PCODE: $0000006B VOL: 0
+;PCODE: $0000006C VOL: 0
+;PCODE: $0000006D VOL: 0
+; 0000 004E         {
+; 0000 004F             clock[1] = 0;
+;PCODE: $0000006E VOL: 0
+;PCODE: $0000006F VOL: 0
+;PCODE: $00000070 VOL: 0
+;PCODE: $00000071 VOL: 0
+; 0000 0050             clock[0]++;
+;PCODE: $00000072 VOL: 0
+;PCODE: $00000073 VOL: 0
+;PCODE: $00000074 VOL: 0
+;PCODE: $00000075 VOL: 0
+; 0000 0051         }
+; 0000 0052     }
+;PCODE: $00000076 VOL: 0
+;PCODE: $00000077 VOL: 0
+; 0000 0053 }
+;PCODE: $00000078 VOL: 0
+;PCODE: $00000079 VOL: 0
+;
+;void display_clock()
+; 0000 0056 {
+;PCODE: $0000007A VOL: 0
+;PCODE: $0000007B VOL: 0
+; 0000 0057     char charValue;
+; 0000 0058     lcd_gotoxy(4,1);
+;PCODE: $0000007C VOL: 0
+;	charValue -> R17
+;PCODE: $0000007D VOL: 0
+;PCODE: $0000007E VOL: 0
+;PCODE: $0000007F VOL: 0
+;PCODE: $00000080 VOL: 0
+; 0000 0059     charValue = clock[0]+'0';
+;PCODE: $00000081 VOL: 0
+;PCODE: $00000082 VOL: 0
+;PCODE: $00000083 VOL: 0
+; 0000 005A     lcd_putchar(charValue);
+;PCODE: $00000084 VOL: 0
+;PCODE: $00000085 VOL: 0
+; 0000 005B     charValue = clock[1]+'0';
+;PCODE: $00000086 VOL: 0
+;PCODE: $00000087 VOL: 0
+;PCODE: $00000088 VOL: 0
+;PCODE: $00000089 VOL: 0
+; 0000 005C     lcd_putchar(charValue);
+;PCODE: $0000008A VOL: 0
+;PCODE: $0000008B VOL: 0
+; 0000 005D 
+; 0000 005E     lcd_gotoxy(7,1);
+;PCODE: $0000008C VOL: 0
+;PCODE: $0000008D VOL: 0
+;PCODE: $0000008E VOL: 0
+;PCODE: $0000008F VOL: 0
+; 0000 005F     charValue = clock[2]+'0';
+;PCODE: $00000090 VOL: 0
+;PCODE: $00000091 VOL: 0
+;PCODE: $00000092 VOL: 0
+;PCODE: $00000093 VOL: 0
+; 0000 0060     lcd_putchar(charValue);
+;PCODE: $00000094 VOL: 0
+;PCODE: $00000095 VOL: 0
+; 0000 0061     charValue = clock[3]+'0';
+;PCODE: $00000096 VOL: 0
+;PCODE: $00000097 VOL: 0
+;PCODE: $00000098 VOL: 0
+;PCODE: $00000099 VOL: 0
+; 0000 0062     lcd_putchar(charValue);
+;PCODE: $0000009A VOL: 0
+;PCODE: $0000009B VOL: 0
+; 0000 0063 
+; 0000 0064     lcd_gotoxy(10,1);
+;PCODE: $0000009C VOL: 0
+;PCODE: $0000009D VOL: 0
+;PCODE: $0000009E VOL: 0
+;PCODE: $0000009F VOL: 0
+; 0000 0065     charValue = clock[4]+'0';
+;PCODE: $000000A0 VOL: 0
+;PCODE: $000000A1 VOL: 0
+;PCODE: $000000A2 VOL: 0
+;PCODE: $000000A3 VOL: 0
+; 0000 0066     lcd_putchar(charValue);
+;PCODE: $000000A4 VOL: 0
+;PCODE: $000000A5 VOL: 0
+; 0000 0067     charValue = clock[5]+'0';
+;PCODE: $000000A6 VOL: 0
+;PCODE: $000000A7 VOL: 0
+;PCODE: $000000A8 VOL: 0
+;PCODE: $000000A9 VOL: 0
+; 0000 0068     lcd_putchar(charValue);
+;PCODE: $000000AA VOL: 0
+;PCODE: $000000AB VOL: 0
+; 0000 0069 
+; 0000 006A     lcd_gotoxy(13,1);
+;PCODE: $000000AC VOL: 0
+;PCODE: $000000AD VOL: 0
+;PCODE: $000000AE VOL: 0
+;PCODE: $000000AF VOL: 0
+; 0000 006B     charValue = clock[6]+'0';
+;PCODE: $000000B0 VOL: 0
+;PCODE: $000000B1 VOL: 0
+;PCODE: $000000B2 VOL: 0
+;PCODE: $000000B3 VOL: 0
+; 0000 006C     lcd_putchar(charValue);
+;PCODE: $000000B4 VOL: 0
+;PCODE: $000000B5 VOL: 0
+; 0000 006D }
+;PCODE: $000000B6 VOL: 0
+;PCODE: $000000B7 VOL: 0
+;PCODE: $000000B8 VOL: 0
+;
+;// Timer1 output compare A interrupt service routine
+;interrupt [TIM1_COMPA] void timer1_compa_isr(void)
+; 0000 0071 {
+;PCODE: $000000B9 VOL: 0
+;PCODE: $000000BA VOL: 0
+; 0000 0072     increase_clock();
+;PCODE: $000000BB VOL: 0
+; 0000 0073     display_clock();
+;PCODE: $000000BC VOL: 0
+; 0000 0074 }
+;PCODE: $000000BD VOL: 0
+;PCODE: $000000BE VOL: 0
+;PCODE: $000000BF VOL: 0
+;
+;void main(void)
+; 0000 0077 {
+;PCODE: $000000C0 VOL: 0
+; 0000 0078 
+; 0000 0079 // Timer/Counter 1 initialization
+; 0000 007A // Clock source: System Clock
+; 0000 007B // Clock value: 31.250 kHz
+; 0000 007C // Mode: CTC top=OCR1A
+; 0000 007D // OC1A output: Discon.
+; 0000 007E // OC1B output: Discon.
+; 0000 007F // Noise Canceler: Off
+; 0000 0080 // Input Capture on Falling Edge
+; 0000 0081 // Timer1 Overflow Interrupt: Off
+; 0000 0082 // Input Capture Interrupt: Off
+; 0000 0083 // Compare A Match Interrupt: On
+; 0000 0084 // Compare B Match Interrupt: Off
+; 0000 0085 TCCR1A=0x00;
+;PCODE: $000000C1 VOL: 0
+;PCODE: $000000C2 VOL: 0
+; 0000 0086 TCCR1B=0x0B;
+;PCODE: $000000C3 VOL: 0
+;PCODE: $000000C4 VOL: 0
+; 0000 0087 TCNT1H=0x00;
+;PCODE: $000000C5 VOL: 0
+;PCODE: $000000C6 VOL: 0
+; 0000 0088 TCNT1L=0x00;
+;PCODE: $000000C7 VOL: 0
+;PCODE: $000000C8 VOL: 0
+; 0000 0089 ICR1H=0x00;
+;PCODE: $000000C9 VOL: 0
+;PCODE: $000000CA VOL: 0
+; 0000 008A ICR1L=0x00;
+;PCODE: $000000CB VOL: 0
+;PCODE: $000000CC VOL: 0
+; 0000 008B OCR1AH=0x20;
+;PCODE: $000000CD VOL: 0
+;PCODE: $000000CE VOL: 0
+; 0000 008C OCR1AL=0x00;
+;PCODE: $000000CF VOL: 0
+;PCODE: $000000D0 VOL: 0
+; 0000 008D OCR1BH=0x00;
+;PCODE: $000000D1 VOL: 0
+;PCODE: $000000D2 VOL: 0
+; 0000 008E OCR1BL=0x00;
+;PCODE: $000000D3 VOL: 0
+;PCODE: $000000D4 VOL: 0
+; 0000 008F 
+; 0000 0090 // Timer(s)/Counter(s) Interrupt(s) initialization
+; 0000 0091 TIMSK=0b00010010;
+;PCODE: $000000D5 VOL: 0
+;PCODE: $000000D6 VOL: 0
+; 0000 0092 
+; 0000 0093 // Global enable interrupts
+; 0000 0094 #asm("sei")
+;PCODE: $000000D7 VOL: 0
+	sei
+;PCODE: $000000D8 VOL: 0
+; 0000 0095 // Declare your local variables here
+; 0000 0096 // Alphanumeric LCD initialization
+; 0000 0097 // Connections are specified in the
+; 0000 0098 // Project|Configure|C Compiler|Libraries|Alphanumeric LCD menu:
+; 0000 0099 // RS - PORTC Bit 0
+; 0000 009A // RD - PORTC Bit 1
+; 0000 009B // EN - PORTC Bit 2
+; 0000 009C 
+; 0000 009D // D4 - PORTC Bit 4
+; 0000 009E // D5 - PORTC Bit 5
+; 0000 009F // D6 - PORTC Bit 6
+; 0000 00A0 // D7 - PORTC Bit 7
+; 0000 00A1 // Characters/line: 16
+; 0000 00A2 lcd_init(16);
+;PCODE: $000000D9 VOL: 0
+;PCODE: $000000DA VOL: 0
+; 0000 00A3 lcd_gotoxy(4,0);
+;PCODE: $000000DB VOL: 0
+;PCODE: $000000DC VOL: 0
+;PCODE: $000000DD VOL: 0
+;PCODE: $000000DE VOL: 0
+; 0000 00A4 lcd_puts("LCD Clock");
+;PCODE: $000000DF VOL: 0
+;PCODE: $000000E0 VOL: 0
+;PCODE: $000000E1 VOL: 0
+; 0000 00A5 lcd_gotoxy(6,1);
+;PCODE: $000000E2 VOL: 0
+;PCODE: $000000E3 VOL: 0
+;PCODE: $000000E4 VOL: 0
+;PCODE: $000000E5 VOL: 0
+; 0000 00A6 lcd_putchar(':');
+;PCODE: $000000E6 VOL: 0
+;PCODE: $000000E7 VOL: 0
+; 0000 00A7 lcd_gotoxy(9,1);
+;PCODE: $000000E8 VOL: 0
+;PCODE: $000000E9 VOL: 0
+;PCODE: $000000EA VOL: 0
+;PCODE: $000000EB VOL: 0
+; 0000 00A8 lcd_putchar(':');
+;PCODE: $000000EC VOL: 0
+;PCODE: $000000ED VOL: 0
+; 0000 00A9 lcd_gotoxy(12,1);
+;PCODE: $000000EE VOL: 0
+;PCODE: $000000EF VOL: 0
+;PCODE: $000000F0 VOL: 0
+;PCODE: $000000F1 VOL: 0
+; 0000 00AA lcd_putchar(',');
+;PCODE: $000000F2 VOL: 0
+;PCODE: $000000F3 VOL: 0
+; 0000 00AB 
+; 0000 00AC 
+; 0000 00AD while (1)
+;PCODE: $000000F4 VOL: 0
+; 0000 00AE       {
+; 0000 00AF       // Place your code here
+; 0000 00B0 
+; 0000 00B1       }
+;PCODE: $000000F5 VOL: 0
+;PCODE: $000000F6 VOL: 0
+; 0000 00B2 }
+;PCODE: $000000F7 VOL: 0
+;PCODE: $000000F8 VOL: 0
+;PCODE: $000000F9 VOL: 0
+
+	.DSEG
+_0xD:
+	.BYTE 0xA
+;

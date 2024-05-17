@@ -1,0 +1,41 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+numbers                                                                           0x02B1      10
+operators                                                                         0x02BB       4
+str_result                                                                        0x02BF      10
+_base_y                                                                           0x02C9       4
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+number1                                                                           R4,R5        2
+number2                                                                           R6,R7        2
+operator                                                                          R9           1
+_lcd_x                                                                            R8           1
+_lcd_y                                                                            R11          1
+_lcd_maxx                                                                         R10          1
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+main                                                                              0x000A3     78
+state_machine                                                                     0x000F1    210
+is_zero_division                                                                  0x001C3     20
+is_number                                                                         0x001D7     30
+is_operator                                                                       0x001F5     30
+calculate                                                                         0x00213     42
+itoa_simple_helper_G000                                                           0x0023D     46
+itoa_simple                                                                       0x0026B     34
+keypad_scan                                                                       0x0028D     85
+_lcd_write_nibble_G100                                                            0x002E2     20
+_lcd_write_data                                                                   0x002F6     12
+lcd_gotoxy                                                                        0x00302     13
+lcd_clear                                                                         0x0030F     12
+lcd_putchar                                                                       0x0031B     21
+lcd_puts                                                                          0x00330     17
+lcd_init                                                                          0x00341     46

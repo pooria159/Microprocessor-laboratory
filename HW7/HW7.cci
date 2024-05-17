@@ -1,0 +1,11 @@
+VERSION:3 SOURCE_TIMESTAMP:588F19C8
+NODE:I LEVEL:0 LINE:24 "C:\cvavr\inc\mega32.h"
+NODE:I LEVEL:0 LINE:25 "C:\cvavr\inc\stdio.h"
+NODE:I LEVEL:0 LINE:26 "C:\cvavr\inc\delay.h"
+NODE:I LEVEL:0 LINE:27 "C:\cvavr\inc\limits.h"
+NODE:I LEVEL:0 LINE:30 "C:\cvavr\inc\alcd.h"
+NODE:F LEVEL:0 LINE:32 "itoa_simple_helper(unsigned char * dest,int i)"
+NODE:F LEVEL:0 LINE:40 "itoa_simple(unsigned char * dest,int i)"
+NODE:F LEVEL:0 LINE:51 "ADC_Init(void)"
+NODE:F LEVEL:0 LINE:57 "ADC_Read(unsigned char channel)"
+NODE:F LEVEL:0 LINE:69 "main(void)"
